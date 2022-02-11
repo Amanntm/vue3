@@ -1,34 +1,27 @@
 <template>
     <div class="app">
         <h4>Создание поста</h4>
-        <form>
-            <input
-                v-bind:value="title"
-                @input="title = $event.target.value"
-                class="input"
-                type="text"
-                placeholder="Название"
-            />
-            <input
-                v-bind:value="body"
-                class="input"
-                type="text"
-                placeholder="Описание" />
-            <button class="button" @click="createPost">Создать пост</button>
-        </form>
+      <post-form
+              @create="createPost"
+      />
         <br>
         <hr>
         <br>
-        
-        <div v-for="post in posts" v-bind:key="post" class="post">
-            <div><strong>Название:</strong>{{ post.title }}</div>
-            <div><strong>Описание:</strong>{{ post.body }}</div>
-        </div>
+
+        <post-list
+                :posts="posts"
+        />
     </div>
 </template>
 
 <script>
+
+    import PostForm from "./components/PostForm";
+    import PostList from "./components/PostList";
 export default {
+    components:{
+        PostForm,PostList
+    },
   data(){
     return{
      posts:[
@@ -39,18 +32,13 @@ export default {
          {id:4,title:'JavaScript 4',body:'Описание поста 4'},
          {id:4,title:'JavaScript 4',body:'Описание поста 4'},
          {id:4,title:'JavaScript 4',body:'Описание поста 4'},
-     ],
-        title:'',
-        body:'',
+     ]
     }
   },
     methods:{
-        createPost(){
-
-        },
-        inputTitle(event){
-            console.log(event)
-        }
+      createPost(post){
+         this.posts.push(post);
+      }
     },
   name: 'App',
 }
@@ -68,33 +56,8 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
 }
-    .post{
-        padding: 15px;
-        border: 2px solid #2c3e50;
-        margin-top: 15px;
-    }
-
-    .input{
-        width: 100%;
-        border: 1px solid #2c3e50 ;
-        padding: 10px 15px;
-        margin-top: 15px;
-    }
     .app{
         padding: 20px;
-    }
-    form{
-        display: flex;
-        flex-direction: column;
-    }
-    .button{
-        background: none;
-        margin-top: 15px;
-        align-self: flex-end;
-        color: #2c3e50;
-        padding: 10px;
-        align-items: center;
-        border: 1px solid #2c3e50;
     }
 
 
