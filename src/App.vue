@@ -1,16 +1,11 @@
 <template>
     <div class="app">
         <h4>Создание поста</h4>
-      <post-form
-              @create="createPost"
-      />
+      <post-form @create="createPost"/><!-- получаем данные из компоненты postForm -->
         <br>
         <hr>
         <br>
-
-        <post-list
-                :posts="posts"
-        />
+        <post-list :posts="posts"/><!-- отправляем данные в компоненту postList -->
     </div>
 </template>
 
@@ -18,7 +13,7 @@
 
     import PostForm from "./components/PostForm";
     import PostList from "./components/PostList";
-export default {
+    export default {
     components:{
         PostForm,PostList
     },

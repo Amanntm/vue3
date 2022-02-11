@@ -16,7 +16,6 @@
                 @click="createPost" >Создать пост</button>
     </form>
 </template>
-
 <script>
     export default {
         data(){
@@ -39,7 +38,6 @@
         }
     }
 </script>
-
 <style scoped>
     form{
         display: flex;
